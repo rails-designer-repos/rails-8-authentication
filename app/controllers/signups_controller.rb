@@ -1,5 +1,6 @@
 class SignupsController < ApplicationController
   allow_unauthenticated_access only: %w[new create]
+  invisible_captcha only: %w[create], timestamp_enabled: false
 
   def new
     @signup = Signup.new

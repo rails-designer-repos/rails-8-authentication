@@ -10,6 +10,8 @@ class Signup
   validates :password, length: 8..128
   validates :terms, acceptance: true
 
+  validates :email_address, is_not_spam: true
+
   def save
     if valid?
       User.create!(email_address: email_address, password: password).tap do |user|
