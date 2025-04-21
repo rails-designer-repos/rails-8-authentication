@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   resources :invitations, only: %w[index new create]
   resources :accept_invitations, only: %w[new create]
+
+  resources :magic_signups, path: "magic-signup", only: %w[new create]
+  resources :magic_sessions, path: "magic-session", param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

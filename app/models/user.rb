@@ -5,4 +5,6 @@ class User < ApplicationRecord
   belongs_to :workspace
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  generates_token_for :signin, expires_in: 5.minutes
 end
