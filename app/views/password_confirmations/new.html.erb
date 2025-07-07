@@ -1,0 +1,11 @@
+<%= form_with url: password_confirmations_path do |form| %>
+  <div>
+    <%= form.label :current_password %>
+
+    <%= form.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :magic_signups, path: "magic-signup", only: %w[new create]
   resources :magic_sessions, path: "magic-session", param: :token
+
+  resources :password_confirmations, only: %w[new create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
