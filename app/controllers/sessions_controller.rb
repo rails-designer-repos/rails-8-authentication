@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    unimpersonate! if impersonating?
     terminate_session
     redirect_to new_session_path
   end

@@ -57,3 +57,4 @@ group :development do
 end
 
 gem "invisible_captcha", "~> 2.3"
+gem "cgi", "~> 0.5.1" # required for some packaged gem; not required for the business logic!

@@ -1,3 +1,15 @@
 <p>Sign up Successful</p>
 
+<% if impersonating? %>
+  <div>
+    Impersonating (expires at <%= impersonation_expires_at.strftime("%H:%M:%S") %>)
+
+    <%= button_to "Stop Impersonating", impersonation_path, method: :delete %>
+  </div>
+<% end %>
+
+<ul>
+  <%= render User.all %>
+</ul>
+
 <%= button_to "Log out", session_path, method: :delete %>

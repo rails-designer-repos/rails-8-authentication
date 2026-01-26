@@ -1,0 +1,8 @@
+<li>
+  <p>(<%= user.id %>) <%= user.email_address %></p>
+
+  <p>
+    <%= tag.b "(this is you)" if Current.user == user %>
+    <%= button_to "Impersonate", impersonation_path(user_id: user.id), method: :post %>
+  </p>
+</li>
