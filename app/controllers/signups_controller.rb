@@ -22,6 +22,6 @@ class SignupsController < ApplicationController
 
   def signup_params
     # NOTE: new syntax, see PR: https://github.com/rails/rails/pull/51674
-    params.expect(signup: [ :email_address, :password, :terms ])
+    params.expect(signup: [ :email_address, :password, :terms, :product_emails ])
   end
 end

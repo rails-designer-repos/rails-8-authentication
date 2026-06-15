@@ -5,6 +5,7 @@ class Signup
   attribute :email_address, :string
   attribute :password, :string
   attribute :terms, :boolean, default: false
+  attribute :product_emails, :boolean, default: false
 
   validates :email_address, presence: true
   validates :password, length: 8..128
@@ -16,6 +17,7 @@ class Signup
     if valid?
       User.create!(email_address: email_address, password: password).tap do |user|
         create_workspace_for user
+        subscribe_to_product_emails user if product_emails
         send_welcome_email_to user
       end
     end
@@ -35,5 +37,11 @@ class Signup
 
   def send_welcome_email_to(user)
     # eg. WelcomeEmail.perform_later user
+  end
+
+  def subscribe_to_product_emails(user)
+    user.create_subscriptions(product_emails_subscribed_at: Time.current)
+
+    Courrier::Subscriber.create(user.email_address)
   end
 end
